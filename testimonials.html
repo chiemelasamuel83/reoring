@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Testimonials — Ironknot Trucking</title>
+  <link rel="stylesheet" href="css/styles.css" type="text/css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg bg-black">
+      <div class="container">
+        <a class="navbar-brand text-white" href="index.html">ironknot Trucking</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link text-white" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="services.html">Services</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="fleet.html">Fleet</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="testimonials.html">Testimonials</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="contact-us.html">Contact us</a></li>
+            <li class="nav-item"><a class="nav-link text-white" href="sign-up.html">Sign up</a></li>
+            <li class="nav-item"><a class="nav-link text-white mybuta" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Login</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Login To Continue</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          Dont have an account yet? <a href="sign-up.html">Sign up</a>
+        </p>
+        <form action="" method="post" enctype="multipart/form-data">
+         <div class="row">
+          <div class="col-12 mt-2">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Enter username" class="form-control" required>
+          </div>
+          <div class="col-12 mt-2">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" placeholder="Enter password" class="form-control" required>
+          </div>
+          <div class="col-12 mt-4">
+           <button type="submit" name="submit" title="Login Now" class="btn btn-success">Login Now</button>
+          </div>
+         </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+  <main class="container py-5">
+    <h1>What Clients Say</h1>
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <blockquote class="blockquote">
+          <p>"Fast, reliable, and excellent communication — saved our shipment timeline."</p>
+          <footer class="blockquote-footer">Logistics Manager, ACME Corp</footer>
+        </blockquote>
+        <blockquote class="blockquote">
+          <p>"Great drivers and no-hassle deliveries. Highly recommend."</p>
+          <footer class="blockquote-footer">Operations Lead, FreshFoods</footer>
+        </blockquote>
+      </div>
+    </div>
+  </main>
+  <footer class="bg-dark text-white py-4 text-center">
+    <div class="container">© <span id="year"></span> ironknot Trucking — All rights reserved</div>
+    <div class="mt-2">Phone:<a href="tel:+2347079796336" class="text-white" style="text-decoration: none;">+2347079796336</a> • Email: <a href="mailto:schiemela79@gmail.com" class="text-white " style="text-decoration: none;">schiemela79@gmail.com</a></div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
