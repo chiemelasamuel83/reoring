@@ -19,28 +19,28 @@ document.addEventListener('DOMContentLoaded', function() {
       return null;
     }
 
-    // --- Login form (existing behavior) ---
-    var loginForm = getFormByIdOrSelector('loginForm', 'form#loginForm');
-    console.log('main.js: loginForm ->', loginForm);
-    if (loginForm) {
-      loginForm.addEventListener('submit', function(e) {
-        console.log('main.js: login submit');
-        e.preventDefault();
-        var userEl = loginForm.querySelector('#login-username');
-        var passEl = loginForm.querySelector('#login-password');
-        var user = userEl ? userEl.value.trim() : '';
-        var pass = passEl ? passEl.value.trim() : '';
-        console.log('main.js: login values', {user: !!user, pass: !!pass});
-        if (!user || !pass) {
-          if (!user && userEl) userEl.focus();
-          else if (!pass && passEl) passEl.focus();
-          return;
-        }
-        console.log('main.js: redirecting to landing (login)');
-        // All fields present — redirect to landing page
-        window.location.href = 'https://chiemelasamuel83.systeme.io/ironknot';
-      });
+    var loginForm = document.getElementById('loginForm');
+
+if (loginForm) {
+  loginForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var userEl = loginForm.querySelector('#login-username');
+    var passEl = loginForm.querySelector('#login-password');
+
+    var user = userEl ? userEl.value.trim() : '';
+    var pass = passEl ? passEl.value.trim() : '';
+
+    if (!user || !pass) {
+      if (!user && userEl) userEl.focus();
+      else if (!pass && passEl) passEl.focus();
+      return;
     }
+
+    // Redirect
+    window.location.href = 'https://chiemelasamuel33.systeme.io/ironknot';
+  });
+}
 
     // --- Sign-up handling: redirect to landing on successful fill ---
     var signForm = getFormByIdOrSelector('signForm', 'form[action="signup.php"]');
