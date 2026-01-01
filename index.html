@@ -50,6 +50,7 @@
   </div>
 </nav>
 <!-- Modal -->
+ 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -61,15 +62,15 @@
         <p>
           Dont have an account yet? <a href="sign-up.html">Sign up</a>
         </p>
-        <form action="" method="post" enctype="multipart/form-data">
+        <form id="loginForm" action="#" method="post" novalidate>
          <div class="row">
           <div class="col-12 mt-2">
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" placeholder="Enter username" class="form-control" required>
+            <label for="login-username">Username</label>
+            <input type="text" name="username" id="login-username" placeholder="Enter username" class="form-control" required>
           </div>
           <div class="col-12 mt-2">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Enter password" class="form-control" required>
+            <label for="login-password">Password</label>
+            <input type="password" name="password" id="login-password" placeholder="Enter password" class="form-control" required>
           </div>
           <div class="col-12 mt-4">
            <button type="submit" id="loginForm" name="submit" title="Login Now" class="btn btn-success">Login Now</button>
