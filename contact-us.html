@@ -41,8 +41,7 @@
         <li class="nav-item">
           <a class="nav-link text-white"href="contact-us.html">Contact us</a>
         </li>
-       
-         <li class="nav-item ">
+         <li class="nav-item">
           <a class="nav-link text-white mybuta" data-bs-toggle="modal" data-bs-target="#exampleModal" href="#">Login</a>
         </li>
        
@@ -51,6 +50,7 @@
   </div>
 </nav>
 <!-- Modal -->
+ 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -62,18 +62,18 @@
         <p>
           Dont have an account yet? <a href="sign-up.html">Sign up</a>
         </p>
-        <form action="" method="post" enctype="multipart/form-data">
+        <form id="loginForm" action="#" method="post" novalidate>
          <div class="row">
           <div class="col-12 mt-2">
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" placeholder="Enter username" class="form-control" required>
+            <label for="login-username">Username</label>
+            <input type="text" name="username" id="login-username" placeholder="Enter username" class="form-control" required>
           </div>
           <div class="col-12 mt-2">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Enter password" class="form-control" required>
+            <label for="login-password">Password</label>
+            <input type="password" name="password" id="login-password" placeholder="Enter password" class="form-control" required>
           </div>
           <div class="col-12 mt-4">
-           <button type="submit" name="submit" title="Login Now" class="btn btn-success">Login Now</button>
+           <button type="submit" id="loginForm" name="submit" title="Login Now" class="btn btn-success">Login Now</button>
           </div>
          </div>
         </form>
@@ -98,7 +98,7 @@
     <div class="container text-center position-relative">
       <h1 class="display-5 fw-bold">Dependable Freight. Nationwide Coverage.</h1>
       <p class="lead mb-4">Modern fleet • Real-time tracking • 24/7 dispatch</p>
-      <a href="#contact" class="btn btn-primary btn-lg">Get a Quote</a>
+      <a href="contact-us.html" class="btn btn-primary btn-lg">Get a Quote</a>
       <a href="#fleet" class="btn btn-outline-light btn-lg ms-2">See Our Fleet</a>
     </div>
   </header>
@@ -122,7 +122,7 @@
             </ul>
           </div>
           <div class="col-sm-12 col-md-6 col-lg-6 mt-4 py-5 mb-mb-0  about" >
-            <img src="image/group-trucks-parked-row.jpg" alt="lodo" style="border-radius: 15px;" class="img-fluid w-100 ">
+            <img src="image/global-logistics-transportation-network-sunset.jpg" alt="lodo" style="border-radius: 15px;" class="img-fluid w-100 ">
           </div>
           </div>
       </section>--><!--section about us ends-->
@@ -160,12 +160,12 @@
        </div>
       </section>--><!--section services ends-->
       <!--section our fleet begins-->
-     <!--<section class="container">
+      <!--<section class="container">
        <div class="row ">
         <h2 class="text-center pt-5 pb-3">Our Fleet</h2>
         <div class="col-md-4">
           <div class="card h-100">
-        <div class="card" style="height: 22rem;">
+        <div class="card" style="height: 22.5rem;">
   <img src="image/group-trucks-parked-row.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">Class 8 Tractors</h5>
@@ -176,8 +176,8 @@
 </div>
 <div class="col-md-4">
   <div class="card h-100">
-        <div class="card "style="height: 22rem;">
-  <img src="image/group-trucks-parked-row.jpg" class="card-img-top" alt="...">
+        <div class="card "style="height: 22.5rem;">
+  <img src="image/aerial-view-factory-trucks-parked-near-warehouse-daytime.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">Flatbeds & Specialized Trailers</h5>
     <p class="card-text">Transports oversized and special cargo with secure load systems.</p>
@@ -187,8 +187,8 @@
 </div>
 <div class="col-md-4">
   <div class="card h-100">
-        <div class="card" style="height: 22rem;">
-  <img src="image/group-trucks-parked-row.jpg" class="card-img-top" alt="...">
+        <div class="card" style="height: 22.5rem;">
+  <img src="image/close-up-delivery-person-with-parcels.jpg" class="card-img-top" alt="...">
   <div class="card-body">
     <h5 class="card-title">Reefer & Temperature-Controlled</h5>
     <p class="card-text">Safe transport for perishables with temperature monitoring.</p>
@@ -196,6 +196,7 @@
   </div>
   </div>
 </div>
+
        </div>
       </section>--><!--section our fleet ends-->
       <!--section our clients begin-->
