@@ -85,28 +85,3 @@ if (loginForm) {
   }
 
 });
- var contactForm = document.getElementById('contactForm');
-
-if (contactForm) {
-  contactForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    var nameEl =contactForm.querySelector('#name');
-    var emailEl = contactForm.querySelector('#email');
-    var messageEl = contactForm.querySelector('#message');
-
-    var  name = nameEl ? userEl.value.trim() : '';
-    var email = emailEl ? passEl.value.trim() : '';
-    var message = messageEl ? passEl.value.trim() : '';
-
-    if (!name || !email || !message) {
-      if (!email && emailEl) emailEl.focus();
-      if (!name && nameEl) nameEl.focus();
-      else if (!message && messageEl) messageEl.focus();
-      return;
-    }
-
-    // Redirect
-    window.location.href ='https://chiemelasamuel83.systeme.io/b1577e76';
-  });
-}
