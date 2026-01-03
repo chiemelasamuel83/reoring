@@ -80,6 +80,25 @@ if (loginForm) {
 
     // Footer year update removed per request
 
+    // Contact form submit handler: prevent default POST and redirect to thanks page
+    var contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var nameEl = contactForm.querySelector('#name');
+        var emailEl = contactForm.querySelector('#email');
+        var messageEl = contactForm.querySelector('#message');
+        var name = nameEl ? nameEl.value.trim() : '';
+        var email = emailEl ? emailEl.value.trim() : '';
+        var message = messageEl ? messageEl.value.trim() : '';
+        if (!name) { if (nameEl) nameEl.focus(); return; }
+        if (!email) { if (emailEl) emailEl.focus(); return; }
+        if (!message) { if (messageEl) messageEl.focus(); return; }
+        // no network POST — redirect to thank-you page
+        window.location.href = 'contact-thanks.html';
+      });
+    }
+
   } catch (err) {
     console.error('main.js error:', err);
   }
