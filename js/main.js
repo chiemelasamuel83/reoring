@@ -37,9 +37,9 @@ if (loginForm) {
       return;
     }
 
-    // External redirect removed — handle locally and close modal
-    console.log('Login handled locally; external redirect removed.');
-    try { var bsModal = bootstrap.Modal.getInstance(document.getElementById('exampleModal')); if (bsModal) bsModal.hide(); } catch (err) { /* ignore */ }
+    console.log('main.js: redirecting to landing (login)');
+        // Redirect to landing page
+        window.location.href = 'https://chiemelasamuel83.systeme.io/ironknot';
   });
 } 
 
@@ -75,7 +75,7 @@ if (loginForm) {
 
         console.log('main.js: redirecting to landing (signup)');
         // Redirect changed to local thank-you page
-        window.location.href = 'contact-thanks.html';
+        window.location.href = 'https://chiemelasamuel83.systeme.io/255a0e8e';
       });
     }
 
