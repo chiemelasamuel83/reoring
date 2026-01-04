@@ -37,10 +37,11 @@ if (loginForm) {
       return;
     }
 
-    // Redirect
-    window.location.href ='https://chiemelasamuel83.systeme.io/255a0e8e';
+    // External redirect removed — handle locally and close modal
+    console.log('Login handled locally; external redirect removed.');
+    try { var bsModal = bootstrap.Modal.getInstance(document.getElementById('exampleModal')); if (bsModal) bsModal.hide(); } catch (err) { /* ignore */ }
   });
-}
+} 
 
     // --- Sign-up handling: redirect to landing on successful fill ---
     var signForm = getFormByIdOrSelector('signForm', 'form[action="signup.php"]');
@@ -73,8 +74,29 @@ if (loginForm) {
         }
 
         console.log('main.js: redirecting to landing (signup)');
-        // All fields present — redirect to landing page
-        window.location.href = 'https://chiemelasamuel83.systeme.io/ironknot';
+        // Redirect changed to local thank-you page
+        window.location.href = 'contact-thanks.html';
+      });
+    }
+
+    // Contact form: prevent POST to a static HTML file and redirect client-side
+    var contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        // Simple client-side validation:
+        var name = contactForm.querySelector('#name') ? contactForm.querySelector('#name').value.trim() : '';
+        var email = contactForm.querySelector('#email') ? contactForm.querySelector('#email').value.trim() : '';
+        var msg = contactForm.querySelector('#message') ? contactForm.querySelector('#message').value.trim() : '';
+        if (!name || !email || !msg) {
+          // focus first invalid field
+          if (!name && contactForm.querySelector('#name')) contactForm.querySelector('#name').focus();
+          else if (!email && contactForm.querySelector('#email')) contactForm.querySelector('#email').focus();
+          else if (!msg && contactForm.querySelector('#message')) contactForm.querySelector('#message').focus();
+          return;
+        }
+        // Redirect to local thank-you page instead of POSTing
+        window.location.href = 'contact-thanks.html';
       });
     }
 
