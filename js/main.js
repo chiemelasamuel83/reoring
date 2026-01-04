@@ -80,60 +80,7 @@ if (loginForm) {
 
     // Footer year update removed per request
 
-    // Contact form submit handler: validate name, email, and message only; clear other fields
-    var contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-
-        function setInvalid(el) {
-          if (!el) return;
-          el.classList.add('is-invalid');
-          el.classList.remove('is-valid');
-        }
-        function setValid(el) {
-          if (!el) return;
-          el.classList.remove('is-invalid');
-          el.classList.add('is-valid');
-        }
-
-        var nameEl = contactForm.querySelector('#name');
-        var emailEl = contactForm.querySelector('#email');
-        var messageEl = contactForm.querySelector('#message');
-
-        var name = nameEl ? nameEl.value.trim() : '';
-        var email = emailEl ? emailEl.value.trim() : '';
-        var message = messageEl ? messageEl.value.trim() : '';
-
-        // simple email regex
-        var emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        var firstInvalid = null;
-        if (!name) { setInvalid(nameEl); firstInvalid = firstInvalid || nameEl; } else { setValid(nameEl); }
-        if (!email || !emailRe.test(email)) { setInvalid(emailEl); firstInvalid = firstInvalid || emailEl; } else { setValid(emailEl); }
-        if (!message) { setInvalid(messageEl); firstInvalid = firstInvalid || messageEl; } else { setValid(messageEl); }
-
-        // Whitelist fields: clear any other inputs/selects/textareas in the form
-        Array.from(contactForm.elements).forEach(function(el) {
-          var tag = (el.tagName || '').toLowerCase();
-          var type = (el.type || '').toLowerCase();
-          if (type === 'submit' || type === 'button') return; // leave buttons
-          if (tag === 'input' || tag === 'textarea' || tag === 'select') {
-            var idOrName = el.id || el.name || '';
-            if (idOrName !== 'name' && idOrName !== 'email' && idOrName !== 'message') {
-              try { el.value = ''; } catch (err) { /* ignore */ }
-            }
-          }
-        });
-
-        if (firstInvalid) { firstInvalid.focus(); return; }
-
-        // Submit succeeded — prevent double submit and redirect to thank-you
-        var submitBtn = contactForm.querySelector('button[type="submit"], input[type="submit"]');
-        if (submitBtn) submitBtn.disabled = true;
-        window.location.href = 'contact-thanks.html';
-      });
-    }
+  
 
   } catch (err) {
     console.error('main.js error:', err);
