@@ -100,70 +100,7 @@ if (loginForm) {
       });
     }
 
-    // Initialize international telephone input and country select
-    (function(){
-      var phoneInput = document.querySelector('#phoneInput');
-      var countrySelect = document.querySelector('#countrySelect');
-      var companySection = document.getElementById('companySection');
-
-      if (phoneInput && window.intlTelInput) {
-        var iti = window.intlTelInput(phoneInput, {
-          separateDialCode: true,
-          preferredCountries: ['ng','us','gb'],
-          utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js'
-        });
-
-        if (countrySelect) {
-          // populate country select from plugin data (sorted alphabetically)
-          var data = iti.getCountryData().slice().sort(function(a,b){ return a.name.localeCompare(b.name); });
-          countrySelect.innerHTML = data.map(function(c){
-            return '<option value="'+c.iso2+'">'+c.flag+' '+c.name+' (+'+c.dialCode+')</option>';
-          }).join('');
-          var selected = iti.getSelectedCountryData();
-          if (selected && selected.iso2) countrySelect.value = selected.iso2;
-
-          countrySelect.addEventListener('change', function(){
-            if (this.value) iti.setCountry(this.value);
-          });
-
-          phoneInput.addEventListener('countrychange', function(){
-            var d = iti.getSelectedCountryData();
-            if (d && d.iso2) countrySelect.value = d.iso2;
-          });
-        }
-      } else {
-        // Plugin missing — populate countrySelect with a basic fallback
-        if (countrySelect) {
-          var fallback = [
-            {iso2:'ng', name:'Nigeria', dialCode:'234', flag:'🇳🇬'},
-            {iso2:'us', name:'United States', dialCode:'1', flag:'🇺🇸'},
-            {iso2:'gb', name:'United Kingdom', dialCode:'44', flag:'🇬🇧'},
-            {iso2:'ca', name:'Canada', dialCode:'1', flag:'🇨🇦'},
-            {iso2:'au', name:'Australia', dialCode:'61', flag:'🇦🇺'}
-          ];
-          countrySelect.innerHTML = fallback.map(function(c){ return '<option value="'+c.iso2+'">'+c.flag+' '+c.name+' (+'+c.dialCode+')</option>'; }).join('');
-        }
-      }
-
-      var individualRadio = document.getElementById('individualRadio');
-      var companyRadio = document.getElementById('companyRadio');
-      if (individualRadio && companyRadio && companySection) {
-        function updateCompanySection(){
-          var show = companyRadio.checked;
-          companySection.style.display = show ? '' : 'none';
-          var nameEl = document.getElementById('companyName');
-          var addrEl = document.getElementById('companyAddress');
-          if (nameEl) nameEl.required = show;
-          if (addrEl) addrEl.required = show;
-        }
-        individualRadio.addEventListener('change', updateCompanySection);
-        companyRadio.addEventListener('change', updateCompanySection);
-        updateCompanySection();
-      }
-
-    })();
-
-  
+      
 
   } catch (err) {
     console.error('main.js error:', err);
