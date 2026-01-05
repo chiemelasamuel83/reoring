@@ -113,3 +113,47 @@ span{
     .privacy-title{ padding-top: .5rem; }
     .privacy-subtitle{ margin-top: .75rem; }
 }
+
+
+    /* GENERAL */
+    body {
+      background-color: #f5f6f8;
+    }
+
+    /* LEFT: SHIPPING ADDRESS */
+    .shipping-box {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 6px;
+      border: 1px solid #e5e5e5;
+    }
+
+    .shipping-title {
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    /* RIGHT: ORDER SUMMARY */
+    .summary-box {
+      background-color: #ffffff;
+      padding: 25px;
+      border-radius: 6px;
+      border: 1px solid #e5e5e5;
+    }
+
+    .summary-title {
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .summary-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    /* PAYMENT */
+    .payment-box {
+      margin-top: 20px;
+    }
+  
