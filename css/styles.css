@@ -14,7 +14,7 @@ header begins
     padding: 10px;
 }
 #hero{
-    margin-top: 80px;
+    margin-top: 0;
 }
 #hero img{
     height: 500px;
@@ -156,4 +156,13 @@ span{
     .payment-box {
       margin-top: 20px;
     }
-  
+
+    /* Fleet Section Hover Effects */
+    #fleet .card-title,
+    #fleet .card-text {
+        transition: all 0.3s ease;
+    }
+    #fleet .card:hover .card-title,
+    #fleet .card:hover .card-text {
+        color: wheat; 
+    }
