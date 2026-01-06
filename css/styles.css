@@ -39,6 +39,7 @@ span{
 }
 .smal{
     text-decoration: none;
+    
 }
 .nin{
     background-color: #ffffff;
@@ -115,56 +116,55 @@ span{
 }
 
 
-    /* GENERAL */
-    body {
-      background-color: #f5f6f8;
-    }
+/* GENERAL */
+body {
+    background-color: #f5f6f8;
+}
 
-    /* LEFT: SHIPPING ADDRESS */
-    .shipping-box {
-      background-color: #bbdefb;
-      padding: 30px;
-      border-radius: 6px;
-      border: 1px solid #e5e5e5;
-      height: 100%;
-    }
+/* LEFT: SHIPPING ADDRESS */
+.shipping-box {
+    background-color: #bbdefb;
+    padding: 30px;
+    border-radius: 6px;
+    border: 1px solid #e5e5e5;
+    height: 100%;
+}
 
-    .shipping-title {
-      font-weight: 600;
-      margin-bottom: 20px;
-    }
+.shipping-title {
+    font-weight: 600;
+    margin-bottom: 20px;
+}
 
-    /* RIGHT: ORDER SUMMARY */
-    .summary-box {
-      background-color: #ffffff;
-      padding: 25px;
-      border-radius: 6px;
-      border: 1px solid #e5e5e5;
-      height: 100%;
-    }
+/* RIGHT: ORDER SUMMARY */
+.summary-box {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 6px;
+    border: 1px solid #e5e5e5;
+    height: 100%;
+}
+.summary-title {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
 
-    .summary-title {
-      font-weight: 600;
-      margin-bottom: 15px;
-    }
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
 
-    .summary-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-
-    /* PAYMENT */
+/* PAYMENT */
     .payment-box {
-      margin-top: 20px;
-    }
+    margin-top: 20px;
+}
 
-    /* Fleet Section Hover Effects */
+/* Fleet Section Hover Effects */
     #fleet .card-title,
     #fleet .card-text {
-        transition: all 0.3s ease;
-    }
-    #fleet .card:hover .card-title,
-    #fleet .card:hover .card-text {
-        color: greenyellow; 
-    }
+    transition: all 0.3s ease;
+}
+#fleet .card:hover .card-title,
+#fleet .card:hover .card-text {
+    color: greenyellow; 
+}
