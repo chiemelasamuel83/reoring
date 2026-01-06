@@ -122,10 +122,11 @@ span{
 
     /* LEFT: SHIPPING ADDRESS */
     .shipping-box {
-      background-color: #ffffff;
+      background-color: #bbdefb;
       padding: 30px;
       border-radius: 6px;
       border: 1px solid #e5e5e5;
+      height: 100%;
     }
 
     .shipping-title {
@@ -139,6 +140,7 @@ span{
       padding: 25px;
       border-radius: 6px;
       border: 1px solid #e5e5e5;
+      height: 100%;
     }
 
     .summary-title {
@@ -164,5 +166,5 @@ span{
     }
     #fleet .card:hover .card-title,
     #fleet .card:hover .card-text {
-        color: wheat; 
+        color: greenyellow; 
     }

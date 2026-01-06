@@ -100,7 +100,102 @@ if (loginForm) {
       });
     }
 
+    // --- Shipping Form Enhancements ---
+    // 1. Individual vs Company Toggle
+    var typeRadios = document.querySelectorAll('input[name="customerType"]');
+    var companyInfo = document.getElementById('company-info');
+    
+    if (typeRadios.length > 0 && companyInfo) {
+      typeRadios.forEach(function(radio) {
+        radio.addEventListener('change', function() {
+          if (this.value === 'company') {
+            companyInfo.style.display = 'flex';
+          } else {
+            companyInfo.style.display = 'none';
+          }
+        });
+      });
+    }
+
+    // 2. Populate Countries and Phone Codes
+    var countrySelect = document.getElementById('countrySelect');
+    var phoneCodeSelect = document.getElementById('phoneCode');
+
+    if (countrySelect || phoneCodeSelect) {
+      var countries = [
+        { code: "NG", name: "Nigeria", dial: "+234", flag: "🇳🇬" },
+        { code: "US", name: "United States", dial: "+1", flag: "🇺🇸" },
+        { code: "GB", name: "United Kingdom", dial: "+44", flag: "🇬🇧" },
+        { code: "CA", name: "Canada", dial: "+1", flag: "🇨🇦" },
+        { code: "GH", name: "Ghana", dial: "+233", flag: "🇬🇭" },
+        { code: "ZA", name: "South Africa", dial: "+27", flag: "🇿🇦" },
+        { code: "KE", name: "Kenya", dial: "+254", flag: "🇰🇪" },
+        { code: "CN", name: "China", dial: "+86", flag: "🇨🇳" },
+        { code: "IN", name: "India", dial: "+91", flag: "🇮🇳" },
+        { code: "DE", name: "Germany", dial: "+49", flag: "🇩🇪" },
+        { code: "FR", name: "France", dial: "+33", flag: "🇫🇷" },
+        { code: "JP", name: "Japan", dial: "+81", flag: "🇯🇵" },
+        { code: "BR", name: "Brazil", dial: "+55", flag: "🇧🇷" },
+        { code: "AU", name: "Australia", dial: "+61", flag: "🇦🇺" },
+        { code: "AE", name: "UAE", dial: "+971", flag: "🇦🇪" }
+      ];
+
+      if (countrySelect) {
+        countrySelect.innerHTML = ""; // Clear existing
+        countries.forEach(function(c) {
+          var opt = document.createElement('option');
+          opt.value = c.code;
+          opt.textContent = c.flag + " " + c.name;
+          countrySelect.appendChild(opt);
+        });
+      }
+
+      if (phoneCodeSelect) {
+        phoneCodeSelect.innerHTML = "";
+        countries.forEach(function(c) {
+          var opt = document.createElement('option');
+          opt.value = c.dial;
+          opt.textContent = c.flag + " " + c.dial;
+          phoneCodeSelect.appendChild(opt);
+        });
+      }
+    }
       
+    // --- Order Summary & Payment Logic ---
+    // 1. Calculate Cost (500 per km)
+    var distanceInput = document.getElementById('distanceKm');
+    var totalCostDisplay = document.getElementById('totalCost');
+
+    if (distanceInput && totalCostDisplay) {
+      distanceInput.addEventListener('input', function() {
+        var km = parseFloat(this.value) || 0;
+        var cost = km * 500;
+        totalCostDisplay.textContent = '₦' + cost.toLocaleString();
+      });
+    }
+
+    // 2. Payment Method Toggle
+    var payCardRadio = document.getElementById('payCard');
+    var payBankRadio = document.getElementById('payBank');
+    var cardDetails = document.getElementById('cardDetails');
+    var bankDetails = document.getElementById('bankDetails');
+
+    function togglePayment() {
+      if (payCardRadio && payCardRadio.checked && cardDetails && bankDetails) {
+        cardDetails.style.display = 'block';
+        bankDetails.style.display = 'none';
+      } else if (payBankRadio && payBankRadio.checked && cardDetails && bankDetails) {
+        cardDetails.style.display = 'none';
+        bankDetails.style.display = 'block';
+      }
+    }
+
+    if (payCardRadio && payBankRadio) {
+      payCardRadio.addEventListener('change', togglePayment);
+      payBankRadio.addEventListener('change', togglePayment);
+      // Initialize state
+      togglePayment();
+    }
 
   } catch (err) {
     console.error('main.js error:', err);

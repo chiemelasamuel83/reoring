@@ -7,7 +7,7 @@
     <meta name="keywords" content="Tested and trusted">
     <link rel="canonical" href="https://www.ironknot.com/index.html">
     <link rel="shortcut icon" href="image/group-trucks-parked-row.jpg" type="image/x-icon">
-    <link rel="stylesheet" href="css/style.css"type="text/css">
+    <link rel="stylesheet" href="css/styles.css" type="text/css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <title>Ironknot Trucking - Reliable Freight & Logistics</title>
     <script src="https://kit.fontawesome.com/9be52963e0.js" crossorigin="anonymous"></script>
@@ -24,6 +24,26 @@
       <div class="shipping-box">
 
         <h5 class="shipping-title">Shipping address</h5>
+
+        <div class="mb-3">
+          <div class="btn-group" role="group">
+            <input type="radio" class="btn-check" name="customerType" id="typeIndividual" value="individual" checked>
+            <label class="btn btn-outline-primary" for="typeIndividual">Individual</label>
+            <input type="radio" class="btn-check" name="customerType" id="typeCompany" value="company">
+            <label class="btn btn-outline-primary" for="typeCompany">Company</label>
+          </div>
+        </div>
+
+        <div id="company-info" class="row g-3 mb-3" style="display: none;">
+          <div class="col-12">
+            <label class="form-label">Company Name</label>
+            <input type="text" class="form-control" id="companyName">
+          </div>
+          <div class="col-12">
+            <label class="form-label">Company Address</label>
+            <input type="text" class="form-control" id="companyAddress">
+          </div>
+        </div>
 
         <div class="row g-3">
           <div class="col-md-6">
@@ -43,8 +63,8 @@
 
           <div class="col-md-6">
             <label class="form-label">Country</label>
-            <select class="form-select">
-              <option>Nigeria</option>
+            <select class="form-select" id="countrySelect">
+              <option value="NG">Nigeria</option>
             </select>
           </div>
 
@@ -60,7 +80,10 @@
 
           <div class="col-md-6">
             <label class="form-label">Phone number *</label>
-            <input type="tel" class="form-control">
+            <div class="input-group">
+              <select class="form-select" id="phoneCode" style="max-width: 110px;"></select>
+              <input type="tel" class="form-control" id="phoneNumber">
+            </div>
           </div>
         </div>
 
@@ -73,38 +96,58 @@
 
         <h5 class="summary-title">Order summary</h5>
 
-        <div class="summary-item">
-          <span>Product</span>
-          <input type="text" class="form-control">
+        <div class="mb-3">
+          <label class="form-label">Items to Transport</label>
+          <textarea class="form-control" id="transportItems" rows="2" placeholder="List items here..."></textarea>
         </div>
 
-        <div class="summary-item">
-          <span>Shipping</span>
-          <input type="text" class="form-control">
+        <div class="mb-3">
+          <label class="form-label">Current Location</label>
+          <input type="text" class="form-control" id="pickupLocation">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Destination</label>
+          <input type="text" class="form-control" id="dropoffLocation">
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Distance (km)</label>
+          <input type="number" class="form-control" id="distanceKm" placeholder="Enter distance in km">
         </div>
 
         <hr>
 
-        <div class="summary-item fw-bold">
-          <span></span>
-          <span></span>
+        <div class="d-flex justify-content-between fw-bold mb-3">
+          <span>Total Cost:</span>
+          <span id="totalCost">₦0.00</span>
         </div>
 
         <div class="payment-box">
           <h6 class="mt-4">Payment method</h6>
 
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="payment" checked>
-            <label class="form-check-label">
-              Pay with card
-            </label>
+            <input class="form-check-input" type="radio" name="payment" id="payCard" value="card" checked>
+            <label class="form-check-label" for="payCard">Pay with card</label>
+          </div>
+          
+          <div id="cardDetails" class="mt-3 p-3 border rounded bg-light">
+            <div class="mb-2">
+              <label class="form-label">Card Type</label>
+              <select class="form-select"><option>Visa</option><option>Mastercard</option><option>Verve</option></select>
+            </div>
+            <div class="mb-2"><input type="text" class="form-control" placeholder="Card Number"></div>
+            <div class="row"><div class="col-6"><input type="text" class="form-control" placeholder="MM/YY"></div><div class="col-6"><input type="text" class="form-control" placeholder="CVV"></div></div>
           </div>
 
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="payment">
-            <label class="form-check-label">
-              Bank transfer
-            </label>
+          <div class="form-check mt-2">
+            <input class="form-check-input" type="radio" name="payment" id="payBank" value="bank">
+            <label class="form-check-label" for="payBank">Bank transfer</label>
+          </div>
+          
+          <div id="bankDetails" class="mt-3 p-3 border rounded bg-light" style="display: none;">
+            <p class="mb-0 fw-bold">7079796336</p>
+            <p class="mb-0">Opay</p>
           </div>
 
           <button class="btn btn-dark w-100 mt-3">
@@ -118,5 +161,13 @@
   </div>
 </div>
 
+<footer class="bg-dark text-white py-4">
+    <div class="container text-center smal">
+      <div>© <span id="year"></span> ironknot Trucking — All rights reserved</div>
+      <div class="mt-2">Phone: <a href="tel:+2347079796336" class="text-white" style="text-decoration: none;">+2347079796336</a> • Email: <a href="mailto:schiemela79@gmail.com" class="text-white " style="text-decoration: none;">schiemela79@gmail.com</a></div>
+    </div>
+  </footer>
+
+<script src="js/main.js"></script>
 </body>
 </html>
