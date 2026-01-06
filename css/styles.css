@@ -19,17 +19,6 @@ header begins
 #hero img{
     height: 500px;
 }
-span{
-    width: 100%;
-    height: auto;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 25px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-weight: bolder;
-    color: #008000;
-    float: left;
-}
 .about ul{
     padding-left: 0;
 }
@@ -66,15 +55,15 @@ span{
 }
 
 @media (max-width: 576px){
-    .thank-area{
-        padding: 2rem 1rem;
-    }
-    .nin{
-        padding: 20px;
-        max-width: 95%;
-    }
-    .thank-title{ font-size: 1.25rem; }
-    .thank-text{ font-size: 1rem; }
+.thank-area{
+    padding: 2rem 1rem;
+}
+.nin{
+    padding: 20px;
+    max-width: 95%;
+}
+.thank-title{ font-size: 1.25rem; }
+.thank-text{ font-size: 1rem; }
 }
 
 /* Privacy section responsive styles */
