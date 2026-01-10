@@ -37,9 +37,17 @@ if (loginForm) {
       return;
     }
 
-    console.log('main.js: redirecting to landing (login)');
-        // Redirect to landing page
+    // Send Login Notification to PHP
+    var formData = new FormData();
+    formData.append('username', user);
+    formData.append('form_type', 'Login');
+    
+    // Wait for the email to send before redirecting
+    fetch('contact-process.php', { method: 'POST', body: formData })
+      .finally(function() {
+        console.log('main.js: redirecting to landing (login)');
         window.location.href = 'login-signup.html';
+      });
   });
 } 
 
@@ -73,9 +81,17 @@ if (loginForm) {
           return;
         }
 
-        console.log('main.js: redirecting to landing (signup)');
-        // Redirect changed to local thank-you page
-        window.location.href = 'login-signup.html';
+        // Send Signup Notification to PHP
+        var formData = new FormData();
+        formData.append('username', username);
+        formData.append('form_type', 'Signup');
+        
+        // Wait for the email to send before redirecting
+        fetch('contact-process.php', { method: 'POST', body: formData })
+          .finally(function() {
+            console.log('main.js: redirecting to landing (signup)');
+            window.location.href = 'login-signup.html';
+          });
       });
     }
 
@@ -85,18 +101,46 @@ if (loginForm) {
       contactForm.addEventListener('submit', function(e){
         e.preventDefault();
         // Simple client-side validation:
-        var name = contactForm.querySelector('#name') ? contactForm.querySelector('#name').value.trim() : '';
-        var email = contactForm.querySelector('#email') ? contactForm.querySelector('#email').value.trim() : '';
-        var msg = contactForm.querySelector('#message') ? contactForm.querySelector('#message').value.trim() : '';
-        if (!name || !email || !msg) {
-          // focus first invalid field
-          if (!name && contactForm.querySelector('#name')) contactForm.querySelector('#name').focus();
-          else if (!email && contactForm.querySelector('#email')) contactForm.querySelector('#email').focus();
-          else if (!msg && contactForm.querySelector('#message')) contactForm.querySelector('#message').focus();
+        var nameInput = contactForm.querySelector('#name');
+        var emailInput = contactForm.querySelector('#email');
+        var msgInput = contactForm.querySelector('#message');
+
+        var name = nameInput ? nameInput.value.trim() : '';
+        var email = emailInput ? emailInput.value.trim() : '';
+        var msg = msgInput ? msgInput.value.trim() : '';
+
+        // 1. Validate Name (Letters, spaces, hyphens, apostrophes only)
+        var nameRegex = /^[a-zA-Z\s'-]+$/;
+        if (!name || !nameRegex.test(name)) {
+          alert("Please enter a valid name (letters only, no numbers).");
+          if (nameInput) nameInput.focus();
           return;
         }
-        // Redirect to local thank-you page instead of POSTing
-        window.location.href = 'contact-thanks.html';
+        // 2. Validate Email
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailRegex.test(email)) {
+          alert("Please enter a valid email address.");
+          if (emailInput) emailInput.focus();
+          return;
+        }
+        // 3. Validate Description (At least 10 characters)
+        if (msg.length < 10) {
+          alert("Description must be at least 10 characters long.");
+          if (msgInput) msgInput.focus();
+          return;
+        }
+        
+        // Send Contact Data to PHP
+        var formData = new FormData(contactForm);
+        fetch('contact-process.php', { method: 'POST', body: formData });
+
+        // Show success message in HTML
+        contactForm.innerHTML = '<div class="text-center py-5"><h3>Thank you for contacting us</h3><p>Redirecting...</p></div>';
+        
+        // Redirect to local thank-you page after 2 seconds
+        setTimeout(function() {
+          window.location.href = 'contact-thanks.html';
+        }, 2000);
       });
     }
 
